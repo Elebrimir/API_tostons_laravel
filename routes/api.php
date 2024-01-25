@@ -22,6 +22,6 @@ Route::get('/fecha', function () {
     return response()->json(['fecha' => date("d/m/y h:m:s")]);
 });
 
-Route::get('saludo/{nombre?}', function ($nombre = "Invitado") {
+Route::get('/saludo/{nombre?}', function ($nombre = "Invitado") {
     return response()->json(['saludo' => "Hola, $nombre"]);
 })->where('nombre', "[A-Za-z]+");

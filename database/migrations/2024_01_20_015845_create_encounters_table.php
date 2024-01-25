@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer('touchdowns2');
             $table->integer('casualties1');
             $table->integer('casualties2');
+            $table->integer('table');
 
             $table->foreign('match_player1')->references('id')->on('users');
             $table->foreign('match_player2')->references('id')->on('users');
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('match');
+        Schema::dropIfExists('encounters');
     }
 };

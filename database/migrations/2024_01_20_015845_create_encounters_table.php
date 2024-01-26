@@ -16,18 +16,15 @@ return new class extends Migration
     {
         Schema::create('encounters', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->integer('round');
-            $table->bigInteger('match_player1')->unsigned();
-            $table->bigInteger('match_player2')->unsigned();
-            $table->integer('touchdowns1');
-            $table->integer('touchdowns2');
-            $table->integer('casualties1');
-            $table->integer('casualties2');
+            $table->bigInteger('round_id')->unsigned();
+            $table->bigInteger('player1_id')->unsigned();
+            $table->bigInteger('player2_id')->unsigned();
             $table->integer('table');
+            $table->timestamps();
 
-            $table->foreign('match_player1')->references('id')->on('users');
-            $table->foreign('match_player2')->references('id')->on('users');
+            $table->foreign('round_id')->references('id')->on('rounds');
+            $table->foreign('player1_id')->references('user_id')->on('players');
+            $table->foreign('player2_id')->references('user_id')->on('players');
         });
     }
 

@@ -4,15 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Player;
+use App\Models\Staff;
 
-class PlayerSeeder extends Seeder
+class StaffSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Player::factory(20)->create();
+        Staff::factory(5)->create();
     }
 }

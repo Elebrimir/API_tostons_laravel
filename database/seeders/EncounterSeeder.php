@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
+use App\Models\Encounter;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Player;
 
-class PlayerSeeder extends Seeder
+class EncounterSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Player::factory(20)->create();
+        Encounter::factory(5)->create();
     }
 }

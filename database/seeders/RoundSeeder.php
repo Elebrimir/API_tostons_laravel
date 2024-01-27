@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
+use App\Models\Round;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Player;
 
-class PlayerSeeder extends Seeder
+class RoundSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Player::factory(20)->create();
+        Round::factory(1)->create();
     }
 }

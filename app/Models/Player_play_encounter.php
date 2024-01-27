@@ -21,6 +21,8 @@ class Player_play_encounter extends Model
         'triple_skull',
     ];
 
+    public $incrementing = false; // Indica que las claves primarias no son incrementales
+
     public $timestamps = true;
 
     public function encounter()

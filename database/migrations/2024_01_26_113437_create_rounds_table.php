@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('rounds', function (Blueprint $table) {
             $table->id();
             $table->integer('number');
-            $table->unsignedBigInteger('edition_id');
+            $table->unsignedBigInteger('edition_id')->unique();
 
             $table->foreign('edition_id')->references('id')->on('editions');
 

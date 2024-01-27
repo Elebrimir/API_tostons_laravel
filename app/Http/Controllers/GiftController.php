@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Gift;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class GiftController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return User::get();
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -26,7 +34,15 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Gift $gift)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Gift $gift)
     {
         //
     }
@@ -34,7 +50,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Gift $gift)
     {
         //
     }
@@ -42,7 +58,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Gift $gift)
     {
         //
     }

@@ -12,7 +12,7 @@ class EncounterController extends Controller
      */
     public function index()
     {
-        //
+        return Encounter::get();
     }
 
     /**

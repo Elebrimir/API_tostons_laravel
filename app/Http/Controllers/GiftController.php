@@ -12,7 +12,7 @@ class GiftController extends Controller
      */
     public function index()
     {
-        //
+        return Gift::get();
     }
 
     /**

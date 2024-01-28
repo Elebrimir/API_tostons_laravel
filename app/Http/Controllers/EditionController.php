@@ -12,7 +12,7 @@ class EditionController extends Controller
      */
     public function index()
     {
-        //
+        return Edition::get();
     }
 
     /**

@@ -12,7 +12,7 @@ class PlayerPlayEncounterController extends Controller
      */
     public function index()
     {
-        //
+        return Player_play_encounter::get();
     }
 
     /**

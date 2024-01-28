@@ -12,7 +12,7 @@ class RoundController extends Controller
      */
     public function index()
     {
-        //
+        return Round::get();
     }
 
     /**

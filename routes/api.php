@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\EditionController;
+use App\Http\Controllers\EncounterController;
+use App\Http\Controllers\GiftController;
 use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\PlayerPlayEditionController;
+use App\Http\Controllers\PlayerPlayEncounterController;
+use App\Http\Controllers\RoundController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -17,10 +23,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+*/
 
-Route::apiResource('/users', UserController::class);
-Route::apiResource('/users/staffs', StaffController::class);
-Route::apiResource('/users/players', PlayerController::class);
+Route::apiResource('/v1/users', UserController::class);
+Route::apiResource('/v1/staffs', StaffController::class);
+Route::apiResource('/v1/players', PlayerController::class);
+Route::apiResource('/v1/editionsPlayed', PlayerPlayEditionController::class);
+Route::apiResource('/v1/encountersPlayed', PlayerPlayEncounterController::class);
+Route::apiResource('/v1/edition', EditionController::class);
+Route::apiResource('/v1/rounds', RoundController::class);
+Route::apiResource('/v1/encounter', EncounterController::class);
+Route::apiResource('/v1/gifts', GiftController::class);

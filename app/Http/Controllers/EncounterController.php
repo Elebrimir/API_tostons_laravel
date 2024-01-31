@@ -29,7 +29,7 @@ class EncounterController extends Controller
     public function store(Request $request)
     {
         $encounter = new Encounter();
-        $encounter->table = $request->encounter;
+        $encounter->table = $request->table;
         $encounter->round_id = $request->round_id;
         $encounter->player1_id = $request->player1_id;
         $encounter->player2_id = $request->player2_id;
@@ -59,8 +59,7 @@ class EncounterController extends Controller
      */
     public function update(Request $request, Encounter $encounter)
     {
-        $encounter = new Encounter();
-        $encounter->table = $request->encounter;
+        $encounter->table = $request->table;
         $encounter->round_id = $request->round_id;
         $encounter->player1_id = $request->player1_id;
         $encounter->player2_id = $request->player2_id;

@@ -29,12 +29,14 @@ class PlayerController extends Controller
     public function store(Request $request)
     {
         $player = new Player();
+        $player->user_id = $request->user_id;
+        $player->naf_number = $request->naf_number;
         $player->race = $request->race;
         $player->win = $request->win;
         $player->draw = $request->draw;
-        $player->loss = $request->loss;
+        $player->lose = $request->lose;
         $player->points = $request->points;
-        $player->touchdowns = $request->tounchdowns;
+        $player->touchdowns = $request->touchdowns;
         $player->casualties = $request->casualties;
         $player->triple_skull = $request->triple_skull;
         $player->save();
@@ -66,9 +68,9 @@ class PlayerController extends Controller
         $player->race = $request->race;
         $player->win = $request->win;
         $player->draw = $request->draw;
-        $player->loss = $request->loss;
+        $player->lose = $request->lose;
         $player->points = $request->points;
-        $player->touchdowns = $request->tounchdowns;
+        $player->touchdowns = $request->touchdowns;
         $player->casualties = $request->casualties;
         $player->triple_skull = $request->triple_skull;
         $player->save();

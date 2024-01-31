@@ -25,6 +25,7 @@ class UserController extends Controller
         $user->surname = $request->surname;
         $user->nickname = $request->nickname;
         $user->email = $request->email;
+        $user->phoneNumber = $request->phonenumber;
         $user->password =  bcrypt($request->password);
         $user->save();
 

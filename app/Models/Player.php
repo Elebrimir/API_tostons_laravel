@@ -11,7 +11,7 @@ class Player extends Model
 
     protected $table = 'players';
 
-    protected $primarykey = 'id';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'race',

@@ -20,7 +20,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->nickname = $request->nickname;
+        $user->email = $request->email;
+        $user->password =  bcrypt($request->password);
+        $user->save();
+
+        return response()->json($user, 201);
     }
 
     /**
@@ -34,16 +42,27 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->nickname = $request->nickname;
+        $user->email = $request->email;
+        $user->password =  bcrypt($request->password);
+        $user->save();
+
+        return response()->json($user, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return response()->json([
+            'message' => 'Usuario Eliminado',
+            'user' => $user
+        ]);
     }
 }

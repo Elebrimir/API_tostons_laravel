@@ -28,7 +28,18 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $player = new Player();
+        $player->race = $request->race;
+        $player->win = $request->win;
+        $player->draw = $request->draw;
+        $player->loss = $request->loss;
+        $player->points = $request->points;
+        $player->touchdowns = $request->tounchdowns;
+        $player->casualties = $request->casualties;
+        $player->triple_skull = $request->triple_skull;
+        $player->save();
+
+        return response()->json($player, 201);
     }
 
     /**
@@ -36,7 +47,7 @@ class PlayerController extends Controller
      */
     public function show(Player $player)
     {
-        //
+        return $player;
     }
 
     /**
@@ -52,7 +63,17 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        //
+        $player->race = $request->race;
+        $player->win = $request->win;
+        $player->draw = $request->draw;
+        $player->loss = $request->loss;
+        $player->points = $request->points;
+        $player->touchdowns = $request->tounchdowns;
+        $player->casualties = $request->casualties;
+        $player->triple_skull = $request->triple_skull;
+        $player->save();
+
+        return response()->json($player, 200);
     }
 
     /**
@@ -60,6 +81,10 @@ class PlayerController extends Controller
      */
     public function destroy(Player $player)
     {
-        //
+        $player->delete();
+        return response()->json([
+            'message' => 'Jugador Eliminado',
+            'player' => $player
+        ]);
     }
 }

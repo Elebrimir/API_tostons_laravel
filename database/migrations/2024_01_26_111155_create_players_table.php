@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
+            $table->integer('naf_number');
             $table->string('race');
-            $table->boolean('win');
-            $table->boolean('draw');
-            $table->boolean('lose');
+            $table->integer('win');
+            $table->integer('draw');
+            $table->integer('lose');
             $table->integer('points');
             $table->integer('touchdowns');
             $table->integer('casualties');

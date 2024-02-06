@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('player_plays_editions', function (Blueprint $table) {
-            $table->unsignedBigInteger('player_id')->unique();
-            $table->unsignedBigInteger('edition_id')->unique();
+            $table->unsignedBigInteger('player_id');
+            $table->unsignedBigInteger('edition_id');
 
             $table->primary(['player_id', 'edition_id']);
 

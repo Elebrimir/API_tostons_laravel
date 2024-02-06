@@ -17,8 +17,8 @@ return new class extends Migration
         Schema::create('encounters', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('round_id');
-            $table->unsignedBigInteger('player1_id')->unique();
-            $table->unsignedBigInteger('player2_id')->unique();
+            $table->unsignedBigInteger('player1_id');
+            $table->unsignedBigInteger('player2_id');
             $table->integer('table');
             $table->timestamps();
 

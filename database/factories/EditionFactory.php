@@ -17,8 +17,8 @@ class EditionFactory extends Factory
     public function definition(): array
     {
         return [
-            'year' => fake()->year(2022, 2024),
-            'name' => fake()->streetName(),
+            'year' => $this->faker->year(2023, 2024),
+            'name' => $this->faker->streetName(),
         ];
     }
 }

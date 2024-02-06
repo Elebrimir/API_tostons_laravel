@@ -21,15 +21,15 @@ class EncounterFactory extends Factory
         $players = Player::pluck('user_id')->toArray();
         $rounds = Round::pluck('number')->toArray();
 
-        $player1_id = fake()->randomElement($players);
-        $player2_id = fake()->randomElement(array_diff($players, [$player1_id]));
-        $round_id = fake()->randomElement(($rounds));
+        $player1_id = $this->faker->randomElement($players);
+        $player2_id = $this->faker->randomElement(array_diff($players, [$player1_id]));
+        $round_id = $this->faker->randomElement($rounds);
 
         return [
             'round_id' => $round_id,
             'player1_id' =>  $player1_id,
             'player2_id' => $player2_id,
-            'table' =>  fake()->numberBetween(1, 35),
+            'table' =>  $this->faker->numberBetween(1, 35),
         ];
     }
 }

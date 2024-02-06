@@ -13,6 +13,6 @@ class EncounterSeeder extends Seeder
      */
     public function run(): void
     {
-        Encounter::factory(5)->create();
+        Encounter::factory(15)->create();
     }
 }

@@ -54,15 +54,15 @@ class PlayerFactory extends Factory
 
         return [
             'user_id' => User::factory(),
-            'naf_number' => fake()->numberBetween(1000, 40000),
+            'naf_number' => $this->faker->numberBetween(1000, 40000),
             'race' => $races[rand(0, count($races) - 1)],
-            'win' => fake()->numberBetween(0, 4),
-            'draw' => fake()->numberBetween(0, 4),
-            'lose' => fake()->numberBetween(0, 4),
-            'points' => fake()->numberBetween(0, 12),
-            'touchdowns' => fake()->numberBetween(0, 40),
-            'casualties' => fake()->numberBetween(0, 64),
-            'triple_skull' => fake()->numberBetween(0, 10),
+            'win' => $this->faker->numberBetween(0, 4),
+            'draw' => $this->faker->numberBetween(0, 4),
+            'lose' => $this->faker->numberBetween(0, 4),
+            'points' => $this->faker->numberBetween(0, 12),
+            'touchdowns' => $this->faker->numberBetween(0, 40),
+            'casualties' => $this->faker->numberBetween(0, 64),
+            'triple_skull' => $this->faker->numberBetween(0, 4),
         ];
     }
 }

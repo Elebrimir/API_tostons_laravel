@@ -17,8 +17,8 @@ class GiftFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->firstName(),
-            'type' => fake()->lastName(),
+            'name' => $this->faker->firstName(),
+            'type' => $this->faker->word(),
         ];
     }
 }

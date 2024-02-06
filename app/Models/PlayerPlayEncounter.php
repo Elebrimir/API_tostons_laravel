@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Player_play_encounter extends Model
+class PlayerPlayEncounter extends Model
 {
     use HasFactory;
 

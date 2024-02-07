@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Player;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PlayerController extends Controller
 {
@@ -13,6 +14,17 @@ class PlayerController extends Controller
     public function index()
     {
         return Player::get();
+    }
+
+    public function indexPlayerWithUser()
+    {
+        $playersUsers = DB::table('players')
+            ->join('users', 'players.user_id', '=', 'users.id')
+            ->select('players.*', 'users.nickname')
+            ->orderByDesc('players.points')
+            ->get();
+
+        return response()->json($playersUsers, 200);
     }
 
     /**

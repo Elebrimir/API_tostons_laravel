@@ -37,3 +37,5 @@ Route::apiResource('/v1/edition', EditionController::class);
 Route::apiResource('/v1/rounds', RoundController::class);
 Route::apiResource('/v1/encounter', EncounterController::class);
 Route::apiResource('/v1/gifts', GiftController::class);
+
+Route::get('/v1/players-with-users', [PlayerController::class, 'indexPlayerWithUser']);

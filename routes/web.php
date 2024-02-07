@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Encounter;
 use App\Models\Player;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,6 +37,11 @@ Route::middleware([
     })->name('dashboard');
 });
 
+
 Route::get('/players', function () {
-    return Inertia::render('PlayersList');
-});
+    return Inertia::render('Players/Players', ['players' => Player::get()]);
+})->name('players');
+
+Route::get('/partidos', function () {
+    return Inertia::render('Encounters/Encounters', ['encounters' => Encounter::get(), 'players' => Player::get(), 'users' => User::get()]);
+})->name('partidos');

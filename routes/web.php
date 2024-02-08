@@ -45,3 +45,6 @@ Route::get('/players', function () {
 Route::get('/partidos', function () {
     return Inertia::render('Encounters/Encounters', ['encounters' => Encounter::get(), 'players' => Player::get(), 'users' => User::get()]);
 })->name('partidos');
+Route::delete('/partidos/{id}', function () {
+    return Inertia::render(('Encounters/Encounters'));
+})->name('partidos.destroy');

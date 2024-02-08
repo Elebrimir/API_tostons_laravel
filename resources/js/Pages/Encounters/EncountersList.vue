@@ -43,9 +43,12 @@ defineProps({
                     </div>
                     <div class="flex justify-center items-center">
                         <div class="text-2xl font-bold">
-                            <p class="text-lg font-bold text-ellipsis">VERSUS</p>
+                            <p class="text-lg font-bold text-center">VERSUS</p>
                             <p class="text-sm font-semibold text-center">Mesa {{ encounter.table }}</p>
                             <p class="text-sm font-semibold text-center">Ronda {{ encounter.round_id }}</p>
+                            <button class="middle none center my-4 rounded-lg bg-red-500 py-3 px-5 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" data-ripple-light="true" @click="$inertia.delete(`/partidos/${encounter.id}`)">
+                                Borrar
+                            </button>
                         </div>
                     </div>
 
@@ -69,8 +72,11 @@ defineProps({
                             <p class="text-sm leading-6 text-gray-900">{{ players[encounter.player2_id].race }}</p>
                         </div>
                     </div>
+
                 </li>
             </ul>
         </div>
     </div>
 </template>
+
+

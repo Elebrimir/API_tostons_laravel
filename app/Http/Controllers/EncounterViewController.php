@@ -63,6 +63,8 @@ class EncounterViewController extends Controller
      */
     public function destroy(Encounter $encounter)
     {
-        //
+        $encounter->delete();
+
+        return redirect()->back()->with('success', 'Encounter deleted successfully');
     }
 }

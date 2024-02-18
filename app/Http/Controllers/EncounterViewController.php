@@ -6,6 +6,8 @@ use App\Models\Encounter;
 use App\Models\Player;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 
 class EncounterViewController extends Controller
@@ -15,7 +17,24 @@ class EncounterViewController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Encounters/Encounters', ['encounters' => Encounter::get(), 'players' => Player::get(), 'users' => User::get()]);
+        // Obtener todos los encuentros
+        $encounters = Encounter::all();
+
+        // Verificar si hay datos relacionados en la tabla players_plays_encounters para cada encuentro
+        foreach ($encounters as $encounter) {
+            $hasRelatedData = DB::table('players_plays_encounters')
+                ->where('encounter_id', $encounter->id)
+                ->exists();
+            // Agregar una propiedad 'canDelete' al encuentro que indica si se puede eliminar o no
+            $encounter->canDelete = !$hasRelatedData;
+        }
+
+        // Pasar los encuentros a la vista
+        return Inertia::render('Encounters/Encounters', [
+            'encounters' => $encounters,
+            'players' => Player::all(),
+            'users' => User::all(),
+        ]);
     }
 
     /**
@@ -63,6 +82,8 @@ class EncounterViewController extends Controller
      */
     public function destroy(Encounter $encounter)
     {
+        Log::info('Solicitud DELETE recibida para eliminar el encuentro con ID: ' . $encounter->id);
+
         $encounter->delete();
 
         return redirect()->back()->with('success', 'Encounter deleted successfully');

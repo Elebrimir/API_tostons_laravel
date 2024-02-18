@@ -19,6 +19,15 @@ defineProps({
                 Listado de Partidas por Ronda de la Tostons Bowl
             </h1>
 
+            <!-- Botón desplegable para filtrar por round_id -->
+            <div class="flex items-center mt-4 p-5 border border-spacing-1 rounded-2xl shadow-md">
+                <label for="roundFilter" class="mr-2">Filtrar por Ronda:</label>
+                <select class="border border-spacing-1 rounded-2xl shadow-md" id="roundFilter" v-model="selectedRound" @change="filterByRound">
+                    <option value="all">Todas las Rondas</option>
+                    <option v-for="round in encounters" :key="round.round_id" :value="round.round_id">Ronda {{ round.round_id }}</option>
+                </select>
+            </div>
+
             <ul role="list" class="divide-y divide-gray-200">
                 <li v-for="encounter in encounters" :key="encounter.id" class="flex justify-between gap-x-6 py-5">
                     <div class="p-5 border border-spacing-1 rounded-2xl shadow-md">
@@ -46,7 +55,7 @@ defineProps({
                             <p class="text-lg font-bold text-center">VERSUS</p>
                             <p class="text-sm font-semibold text-center">Mesa {{ encounter.table }}</p>
                             <p class="text-sm font-semibold text-center">Ronda {{ encounter.round_id }}</p>
-                            <button class="middle none center my-4 rounded-lg bg-red-500 py-3 px-5 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" data-ripple-light="true" @click="$inertia.delete(`/partidos/${encounter.id}`)">
+                            <button :hidden="!encounter.canDelete" class="middle none center my-4 rounded-lg bg-red-500 py-3 px-5 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" data-ripple-light="true" @click="$inertia.delete(`/partidos/${encounter.id}`)">
                                 Borrar
                             </button>
                         </div>
@@ -72,7 +81,6 @@ defineProps({
                             <p class="text-sm leading-6 text-gray-900">{{ players[encounter.player2_id].race }}</p>
                         </div>
                     </div>
-
                 </li>
             </ul>
         </div>
@@ -80,3 +88,19 @@ defineProps({
 </template>
 
 
+<script>
+export default {
+    data() {
+        return {
+            selectedRound: 'all',
+            // Resto de tus datos aquí
+        };
+    },
+    methods: {
+        filterByRound() {
+            this.$inertia.get(`/encounters?round_id=${this.selectedRound}`);
+        },
+        // Otros métodos de tu componente aquí
+    }
+}
+</script>

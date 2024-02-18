@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EncounterViewController;
 use App\Models\Encounter;
 use App\Models\Player;
 use App\Models\User;
@@ -37,22 +38,25 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
 
-Route::middleware('auth:sanctum')->get('/players', function () {
-    return Inertia::render('Players/Players', [
-        'players' => Player::get(),
-        'users' => User::get()
-    ]);
-})->name('players');
+    Route::get('/players', function () {
+        return Inertia::render('Players/Players', [
+            'players' => Player::get(),
+            'users' => User::get()
+        ]);
+    })->name('players');
 
-Route::middleware('auth:sanctum')->get('/partidos', function () {
-    return Inertia::render('Encounters/Encounters', [
-        'encounters' => Encounter::get(),
-        'players' => Player::get(),
-        'users' => User::get()
-    ]);
-})->name('partidos');
+    Route::get('/partidos', function () {
+        return Inertia::render('Encounters/Encounters', [
+            'encounters' => Encounter::get(),
+            'players' => Player::get(),
+            'users' => User::get()
+        ]);
+    })->name('partidos');
 
-Route::delete('/partidos/{id}', function () {
-    return Inertia::render(('Encounters/Encounters'));
-})->name('partidos.destroy');
+    Route::delete('/partidos/{encounter}', 'EncounterController@destroy')->name('partidos.destroy');
+});

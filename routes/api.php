@@ -28,12 +28,18 @@ use Illuminate\Support\Facades\Route;
 });
 */
 
-Route::apiResource('/v1/users', UserController::class);
-Route::apiResource('/v1/staffs', StaffController::class);
-Route::apiResource('/v1/players', PlayerController::class);
-Route::apiResource('/v1/editionsPlayed', PlayerPlayEditionController::class);
-Route::apiResource('/v1/encountersPlayed', PlayerPlayEncounterController::class);
-Route::apiResource('/v1/edition', EditionController::class);
-Route::apiResource('/v1/rounds', RoundController::class);
-Route::apiResource('/v1/encounter', EncounterController::class);
-Route::apiResource('/v1/gifts', GiftController::class);
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::apiResource('/v1/users', UserController::class);
+    Route::apiResource('/v1/staffs', StaffController::class);
+    Route::apiResource('/v1/players', PlayerController::class);
+    Route::apiResource('/v1/editionsPlayed', PlayerPlayEditionController::class);
+    Route::apiResource('/v1/encountersPlayed', PlayerPlayEncounterController::class);
+    Route::apiResource('/v1/edition', EditionController::class);
+    Route::apiResource('/v1/rounds', RoundController::class);
+    Route::apiResource('/v1/encounter', EncounterController::class);
+    Route::apiResource('/v1/gifts', GiftController::class);
+});
+
+
+Route::get('/v1/players-with-users', [PlayerController::class, 'indexPlayerWithUser']);

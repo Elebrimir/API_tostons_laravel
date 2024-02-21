@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Player_play_encounter;
+use App\Models\PlayerPlayEncounter;
 use Illuminate\Http\Request;
 
 class PlayerPlayEncounterController extends Controller
@@ -12,7 +12,7 @@ class PlayerPlayEncounterController extends Controller
      */
     public function index()
     {
-        return Player_play_encounter::get();
+        return PlayerPlayEncounter::get();
     }
 
     /**
@@ -34,7 +34,7 @@ class PlayerPlayEncounterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Player_play_encounter $player_play_encounter)
+    public function show(PlayerPlayEncounter $player_play_encounter)
     {
         //
     }
@@ -42,7 +42,7 @@ class PlayerPlayEncounterController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Player_play_encounter $player_play_encounter)
+    public function edit(PlayerPlayEncounter $player_play_encounter)
     {
         //
     }
@@ -50,7 +50,7 @@ class PlayerPlayEncounterController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Player_play_encounter $player_play_encounter)
+    public function update(Request $request, PlayerPlayEncounter $player_play_encounter)
     {
         //
     }
@@ -58,7 +58,7 @@ class PlayerPlayEncounterController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Player_play_encounter $player_play_encounter)
+    public function destroy(PlayerPlayEncounter $player_play_encounter)
     {
         //
     }

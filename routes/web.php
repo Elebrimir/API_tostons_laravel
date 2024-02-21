@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\EncounterViewController;
 use App\Models\Encounter;
 use App\Models\Player;
 use App\Models\User;
@@ -40,10 +39,6 @@ Route::middleware([
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-
     Route::get('/usuarios', function () {
         return Inertia::render('Users/Users', [
             'users' => User::get()
@@ -64,6 +59,4 @@ Route::middleware(['auth:sanctum'])->group(function () {
             'users' => User::get()
         ]);
     })->name('partidos');
-
-    Route::delete('/partidos/{encounter}', 'EncounterController@destroy')->name('partidos.destroy');
 });

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Player_play_edition;
+use App\Models\PlayerPlayEdition;
 use Illuminate\Http\Request;
 
 class PlayerPlayEditionController extends Controller
@@ -34,7 +34,7 @@ class PlayerPlayEditionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Player_play_edition $player_play_edition)
+    public function show(PlayerPlayEdition $player_play_edition)
     {
         //
     }
@@ -42,7 +42,7 @@ class PlayerPlayEditionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Player_play_edition $player_play_edition)
+    public function edit(PlayerPlayEdition $player_play_edition)
     {
         //
     }
@@ -50,7 +50,7 @@ class PlayerPlayEditionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Player_play_edition $player_play_edition)
+    public function update(Request $request, PlayerPlayEdition $player_play_edition)
     {
         //
     }
@@ -58,7 +58,7 @@ class PlayerPlayEditionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Player_play_edition $player_play_edition)
+    public function destroy(PlayerPlayEdition $player_play_edition)
     {
         //
     }

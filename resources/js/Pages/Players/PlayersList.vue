@@ -1,23 +1,12 @@
 <script setup>
 
-import { ref, onMounted } from 'vue';
 import TostonetLogo from '@/Components/TostonetLogo.vue';
 import PlayersFormUpdate from '@/Components/PlayersFormUpdate.vue';
-const players = ref([]);
-const selectedPlayer = ref(null);
 
-onMounted(async () => {
-    try {
-        const response = await fetch('/api/v1/players-with-users');
-        if (!response.ok) {
-            throw new Error('Failed to fetch players');
-        }
-        const data = await response.json();
-        players.value = data;
-    } catch (error) {
-        console.error(error);
-    }
-});
+defineProps({
+    players: Object,
+    users: Object,
+})
 
 const openModal = (player) => {
     selectedPlayer.value = player;
@@ -37,7 +26,7 @@ const openModal = (player) => {
             <ul role="list" class="divide-y divide-gray-200">
                 <li v-for="player in players" :key="player.id" class="flex justify-between gap-x-6 py-5" style="cursor: pointer;" @click="openModal(player)">
                     <div class="flex min-w-0 gap-x-4">
-                        <img class="h-12 w-12 flex-none rounded-full bg-gray-50" :src="'https://api.dicebear.com/7.x/adventurer/svg?seed=' + player.nickname" alt="Avatar" />
+                        <img class="h-12 w-12 flex-none rounded-full bg-gray-50" :src="'https://api.dicebear.com/7.x/adventurer/svg?seed=' + users[player.user_id].nickname" alt="Avatar" />
                         <div class="min-w-0 flex-auto">
                             <p class="text-sm font-semibold leading-6 text-gray-900">{{ player.nickname }}</p>
                             <p class="mt-1 truncate text-xs leading-5 text-gray-500">NAF: {{ player.naf_number }}</p>
@@ -61,7 +50,7 @@ const openModal = (player) => {
         <!-- Modal de edición de jugadores -->
         <PlayersFormUpdate :player="selectedPlayer" v-if="selectedPlayer" @close="selectedPlayer = null" />
 
-        
+
 
     </div>
 </template>

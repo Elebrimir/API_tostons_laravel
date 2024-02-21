@@ -39,7 +39,7 @@ Route::middleware([
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
-    Route::get('/usuarios', function () {
+    Route::middleware(['admin'])->get('/usuarios', function () {
         return Inertia::render('Users/Users', [
             'users' => User::get()
         ]);

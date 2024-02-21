@@ -56,6 +56,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Verifica si el usuario tiene un rol específico.
+     *
+     * @param string $role El nombre del rol a verificar.
+     * @return bool True si el usuario tiene el rol especificado, false en caso contrario.
+     */
+    public function hasRole($role)
+    {
+        // Verifica si el campo roles coincide con el rol especificado
+        return $this->roles === $role;
+    }
+
     public function player()
     {
         return $this->hasOne(Player::class);

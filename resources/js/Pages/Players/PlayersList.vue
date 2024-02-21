@@ -7,11 +7,6 @@ defineProps({
     players: Object,
     users: Object,
 })
-
-const openModal = (player) => {
-    selectedPlayer.value = player;
-};
-
 </script>
 
 <template>
@@ -28,7 +23,7 @@ const openModal = (player) => {
                     <div class="flex min-w-0 gap-x-4">
                         <img class="h-12 w-12 flex-none rounded-full bg-gray-50" :src="'https://api.dicebear.com/7.x/adventurer/svg?seed=' + users[player.user_id].nickname" alt="Avatar" />
                         <div class="min-w-0 flex-auto">
-                            <p class="text-sm font-semibold leading-6 text-gray-900">{{ player.nickname }}</p>
+                            <p class="text-sm font-semibold leading-6 text-gray-900">{{ users[player.user_id].nickname }}</p>
                             <p class="mt-1 truncate text-xs leading-5 text-gray-500">NAF: {{ player.naf_number }}</p>
                         </div>
                     </div>
@@ -46,11 +41,22 @@ const openModal = (player) => {
                 </li>
             </ul>
         </div>
-
         <!-- Modal de edición de jugadores -->
-        <PlayersFormUpdate :player="selectedPlayer" v-if="selectedPlayer" @close="selectedPlayer = null" />
-
-
-
+        <PlayersFormUpdate :player="selectedPlayer" :users="users" v-if="selectedPlayer" @close="selectedPlayer = null" />
     </div>
 </template>
+
+<script>
+    export default {
+        data() {
+            return {
+                selectedPlayer: null, // Inicializa la variable como un objeto o valor null
+            };
+        },
+        methods: {
+            openModal(player) {
+                this.selectedPlayer = player; // Actualiza la variable dentro de los métodos
+            },
+        },
+    };
+</script>

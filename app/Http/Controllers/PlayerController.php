@@ -16,17 +16,6 @@ class PlayerController extends Controller
         return Player::get();
     }
 
-    public function indexPlayerWithUser()
-    {
-        $playersUsers = DB::table('players')
-            ->join('users', 'players.user_id', '=', 'users.id')
-            ->select('players.*', 'users.nickname')
-            ->orderByDesc('players.points')
-            ->get();
-
-        return response()->json($playersUsers, 200);
-    }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -77,17 +66,28 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        $player->race = $request->race;
-        $player->win = $request->win;
-        $player->draw = $request->draw;
-        $player->lose = $request->lose;
-        $player->points = $request->points;
-        $player->touchdowns = $request->touchdowns;
-        $player->casualties = $request->casualties;
-        $player->triple_skull = $request->triple_skull;
-        $player->save();
+        try {
+            $player->race = $request->race;
+            $player->win = $request->win;
+            $player->draw = $request->draw;
+            $player->lose = $request->lose;
+            $player->points = $request->points;
+            $player->touchdowns = $request->touchdowns;
+            $player->casualties = $request->casualties;
+            $player->triple_skull = $request->triple_skull;
+            $player->save();
 
-        return response()->json($player, 200);
+            return response()->json($player, 200);
+        } catch (\Exception $e) {
+            // Loguear el error para propósitos de depuración
+            logger()->error('Error al actualizar el jugador: ' . $e->getMessage());
+
+            // Devolver una respuesta de error
+            return response()->json([
+                'message' => 'Error al actualizar el jugador',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     /**

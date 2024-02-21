@@ -21,7 +21,7 @@ class RoundFactory extends Factory
         $editionId = Edition::inRandomOrder()->value('id') ?? Edition::factory()->create()->id;
 
         return [
-            'number' => $this->faker->numberBetween(1, 4),
+            'number' => $this->faker->numberBetween(1, 1),
             'edition_id' => $editionId,
         ];
     }

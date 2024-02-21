@@ -10,9 +10,26 @@ class EditionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Edition::get();
+        // Obtener todos los parámetros de la solicitud
+        $filters = $request->all();
+
+        // Construir la consulta
+        $query = Edition::query();
+
+        //Aplicar filtros
+        foreach ($filters as $colum => $value) {
+
+            if (Edition::isColum($colum)) {
+                $query->where($colum, $value);
+            }
+        }
+
+        //Ejecutar la consulta
+        $editions = $query->get();
+
+        return response()->json(['editions' => $editions]);
     }
 
     /**

@@ -29,7 +29,7 @@ class PlayerViewController extends Controller
      */
     public function store(Request $request)
     {
-        // Crear un nou llibre amb les dades rebudes
+        // Crear un nou Jugador amb les dades rebudes
         Player::create($request->all());
 
         // Redireccionar a la llista de jugadors

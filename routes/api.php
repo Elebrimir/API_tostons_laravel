@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EditionController;
 use App\Http\Controllers\EncounterController;
 use App\Http\Controllers\GiftController;
@@ -28,18 +29,17 @@ use Illuminate\Support\Facades\Route;
 });
 */
 
-Route::middleware('auth:sanctum')->group(function () {
 
-    Route::apiResource('/v1/users', UserController::class);
-    Route::apiResource('/v1/staffs', StaffController::class);
-    Route::apiResource('/v1/players', PlayerController::class);
-    Route::apiResource('/v1/editionsPlayed', PlayerPlayEditionController::class);
-    Route::apiResource('/v1/encountersPlayed', PlayerPlayEncounterController::class);
-    Route::apiResource('/v1/edition', EditionController::class);
-    Route::apiResource('/v1/rounds', RoundController::class);
-    Route::apiResource('/v1/encounter', EncounterController::class);
-    Route::apiResource('/v1/gifts', GiftController::class);
-});
+
+Route::apiResource('/v1/users', UserController::class);
+Route::apiResource('/v1/staffs', StaffController::class);
+Route::apiResource('/v1/players', PlayerController::class);
+Route::apiResource('/v1/editionsPlayed', PlayerPlayEditionController::class);
+Route::apiResource('/v1/encountersPlayed', PlayerPlayEncounterController::class);
+Route::apiResource('/v1/edition', EditionController::class);
+Route::apiResource('/v1/rounds', RoundController::class);
+Route::apiResource('/v1/encounter', EncounterController::class);
+Route::apiResource('/v1/gifts', GiftController::class);
 
 
 Route::get('/v1/players-with-users', [PlayerController::class, 'indexPlayerWithUser']);

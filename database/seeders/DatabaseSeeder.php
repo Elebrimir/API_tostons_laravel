@@ -26,6 +26,5 @@ class DatabaseSeeder extends Seeder
         $this->call(GiftSeeder::class);
         $this->call(RoundSeeder::class);
         $this->call(EncounterSeeder::class);
-        $this->call(PlayerPlayEncounterSeeder::class);
     }
 }

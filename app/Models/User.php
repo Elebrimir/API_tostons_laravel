@@ -17,7 +17,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    
+
     protected $table = 'users';
     protected $primaryKey = 'id';
     /**
@@ -31,6 +31,7 @@ class User extends Authenticatable
         'nickname',
         'email',
         'password',
+        'roles',
     ];
 
     /**

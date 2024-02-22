@@ -48,10 +48,13 @@ defineProps({
 </template>
 
 <script>
+
+const userId = 34;
+
 export default {
     methods: {
         async guardarCambios(user) {
-            axios.put(`/api/v1/users/${user.id}`, user)
+            axios.put(`/api/v1/users/${user.id}`, { ...user, user_id: userId })
                 .then(response => {
                     console.log('Cambios guardados correctamente');
                     // Puedes actualizar la lista de usuarios o realizar cualquier otra acción necesaria después de guardar los cambios

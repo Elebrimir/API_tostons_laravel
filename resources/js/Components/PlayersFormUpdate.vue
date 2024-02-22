@@ -20,11 +20,11 @@ const closeModal = () => {
 
 // Copia los datos del jugador al formulario
 const formData = {
-    nafNumber: props.player.naf_number,
+    naf_number: props.player.naf_number,
     race: props.player.race,
-    wins: props.player.win,
-    draws: props.player.draw,
-    loses: props.player.lose,
+    win: props.player.win,
+    draw: props.player.draw,
+    lose: props.player.lose,
     touchdowns: props.player.touchdowns,
     casualties: props.player.casualties,
     skulls: props.player.triple_skull,
@@ -32,10 +32,10 @@ const formData = {
 
 const submitForm = () => {
     // Convertir los campos necesarios a enteros antes de enviar el formulario
-    convertToInteger('nafNumber');
-    convertToInteger('wins');
-    convertToInteger('draws');
-    convertToInteger('loses');
+    convertToInteger('naf_number');
+    convertToInteger('win');
+    convertToInteger('draw');
+    convertToInteger('lose');
     convertToInteger('touchdowns');
     convertToInteger('casualties');
     convertToInteger('skulls');
@@ -81,8 +81,8 @@ const convertToInteger = (fieldName) => {
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
                                     <div class="mb-4">
-                                        <label for="nafNumber" class="block text-sm font-medium text-gray-700">Numero NAF</label>
-                                        <input type="text" id="naf_number" v-model="formData.nafNumber" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <label for="naf_number" class="block text-sm font-medium text-gray-700">Numero NAF</label>
+                                        <input type="text" id="naf_number" v-model="formData.naf_number" readonly class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                     <div class="mb-4">
                                         <label for="race" class="block text-sm font-medium text-gray-700">Raza</label>
@@ -90,15 +90,15 @@ const convertToInteger = (fieldName) => {
                                     </div>
                                     <div class="mb-4">
                                         <label for="win" class="block text-sm font-medium text-gray-700">Victorias 👍</label>
-                                        <input type="text" id="win" v-model="formData.wins" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <input type="text" id="win" v-model="formData.win" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                     <div class="mb-4">
                                         <label for="draw" class="block text-sm font-medium text-gray-700">Empates ❌</label>
-                                        <input type="text" id="draw" v-model="formData.draws" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <input type="text" id="draw" v-model="formData.draw" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                     <div class="mb-4">
                                         <label for="lose" class="block text-sm font-medium text-gray-700">Derrotas 👎</label>
-                                        <input type="text" id="lose" v-model="formData.loses" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                        <input type="text" id="lose" v-model="formData.lose" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                 </div>
                                 <div>

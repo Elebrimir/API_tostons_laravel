@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActionLog;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -38,9 +40,18 @@ class UserController extends Controller
         // Obtener los usuarios paginados y ordenados según los parámetros de la consulta
         $users = $usersQuery->paginate($perPage);
 
+        ActionLog::create([
+            'user_id' => '34', // ID del usuario que realiza la acción
+            'action' => 'list users', // Acción realizada (en este caso, actualización)
+            'ip' => $request->ip(), // IP desde la que se realiza la acción
+            'table' => 'users', // Nombre de la tabla afectada
+        ]);
+
         // Devolver la lista de usuarios paginada y ordenada como una respuesta JSON
         return response()->json($users);
-        
+
+        // Registrar la acción en action_logs
+
     }
 
 
@@ -87,15 +98,35 @@ class UserController extends Controller
             ])
         ]);
 
+        // Registrar la acción en action_logs
+
+
+        ActionLog::create([
+            'user_id' => '34', // ID del usuario que realiza la acción
+            'action' => 'update', // Acción realizada (en este caso, actualización)
+            'ip' => $request->ip(), // IP desde la que se realiza la acción
+            'table' => 'users', // Nombre de la tabla afectada
+            'object_id' => $user->id // ID del objeto afectado (en este caso, el ID del usuario)
+        ]);
+
         return response()->json(['message' => 'Usuario actualizado correctamente', 'user' => $user], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(User $user, Request $request)
     {
         $user->delete();
+
+        ActionLog::create([
+            'user_id' => '34', // ID del usuario que realiza la acción
+            'action' => 'delete', // Acción realizada (en este caso, borrar)
+            'ip' => $request->ip(), // IP desde la que se realiza la acción
+            'table' => 'users', // Nombre de la tabla afectada
+            'object_id' => $user->id // ID del objeto afectado (en este caso, el ID del usuario)
+        ]);
+
         return response()->json([
             'message' => 'Usuario Eliminado',
             'user' => $user

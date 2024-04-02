@@ -9,7 +9,7 @@ services:
         - MYSQL_ROOT_PASSWORD=TostPassAdmin
         - MYSQL_DATABASE=tostonTestDB
         - MYSQL_USER=pabloC
-        - MYSQL_PASSWORD=Esa.123
+        - MYSQL_PASSWORD=mysql
     volumes:
       - tostons-db-data:/var/lib/mysql
 volumes:

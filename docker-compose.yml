@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  tostonsdb:
+    image: mysql:8.0
+    restart: always
+    ports:
+      - 3309:3306
+    environment:
+        - MYSQL_ROOT_PASSWORD=TostPassAdmin
+        - MYSQL_DATABASE=tostonTestDB
+        - MYSQL_USER=pabloC
+        - MYSQL_PASSWORD=Esa.123
+    volumes:
+      - tostons-db-data:/var/lib/mysql
+volumes:
+  tostons-db-data:

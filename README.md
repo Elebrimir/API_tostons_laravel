@@ -128,3 +128,11 @@ $ ansible-playbook -i inventory/inventario download_repository.yml
 ```
 
 
+</blockquote>
+
+---
+
+**Actualización dia 03-04-2024**
+
+[Desarrollar Algoritmo Emparejamientos Torneo #7
+](https://github.com/Elebrimir/API_tostons_laravel/issues/7#issuecomment-2035359997)

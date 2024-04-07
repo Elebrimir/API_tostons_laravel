@@ -62,3 +62,4 @@ eliminarlos de la llista dels sortejos que falten.
 -   Secció de enllaços d’interés a diverses pàgines, forums i grups de xaxes socials (Telegram,
     Whatsapp,...)
     Alguna cosa més que pot anar eixint amb el feedback, quan es comente amb companys d'organització del torneig i per supost amb jugadors que façen ús de la web.
+<blockquote/>

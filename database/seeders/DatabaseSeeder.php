@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PlayerSeeder::class);
         $this->call(EditionSeeder::class);
         $this->call(GiftSeeder::class);
+        $this->call(RoundSeeder::class);
     }
 }

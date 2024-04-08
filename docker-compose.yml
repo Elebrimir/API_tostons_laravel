@@ -7,7 +7,7 @@ services:
       - 3309:3306
     environment:
         - MYSQL_ROOT_PASSWORD=TostPassAdmin
-        - MYSQL_DATABASE=tostonTestDB
+        - MYSQL_DATABASE=tostons_web_db
         - MYSQL_USER=pabloC
         - MYSQL_PASSWORD=mysql
     volumes:

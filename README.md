@@ -60,9 +60,49 @@ eliminarlos de la llista dels sortejos que falten.
 -   Historial de Edicions anteriors amb tots el guanyador de totes les categories del torneig.
 -   Apartat amb fotos i imatges de premis, patrocinadors, etc.
 -   Secció de enllaços d’interés a diverses pàgines, forums i grups de xaxes socials (Telegram,
-    Whatsapp,...)
-    Alguna cosa més que pot anar eixint amb el feedback, quan es comente amb companys d'organització del torneig i per supost amb jugadors que façen ús de la web.
+Whatsapp,...)
+Alguna cosa més que pot anar eixint amb el feedback, quan es comente amb companys d'organització del torneig i per supost amb jugadors que façen ús de la web.
 </blockquote>
+
+# PUESTA EN MARCHA DEL PROYECTO EN LOCALHOST
+
+Lo primero que hay que hacer una vez descargado el repositorio en nuestro host es instalar las dependencias:
+
+`npm install`
+
+`composer install`
+
+Una vez se han instalado todos los modulos podemos pasar a arrancar el _docker-compose.yml_ para inicializar la base de datos.
+
+En un terminal lanzamos el comando:
+
+`docker-compose up`
+
+Esto nos creara un contenedor _mysql_ para almacenar la base de datos.
+
+## Creación de las tablas y poblar la base de datos
+
+Lo primero que vamos a realizar es hacer la migración para crear las tablas de la base de datos, para ello utilizaremos el comando:
+
+`php artisan migrate`
+
+Además, para poder empezar a utilizar la aplicación con datos de prueba o demo vamos poblar con el seeder de Laravel, para ello utilizamos el comando:
+
+`php artisan db:seed`
+
+## Arrancar servidor y vista en local
+
+Ahora ya podemos arrancar el servidor:
+
+`php artisan serve`
+
+Y la parte visual con:
+
+`npm run dev`
+
+Con esta configuración ya podemos abrir la página [Tostons_Web](https://localhost:8000)
+
+
 
 ---
 

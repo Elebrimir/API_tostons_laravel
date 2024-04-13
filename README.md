@@ -84,11 +84,8 @@ mysql> USE tostons_web_db;
 mysql> SHOW TABLES;
 
 
-
-
-
-
-
 ### WEB
 http://127.0.0.1:8001/login
->>>>>>> 9123572 (Created Docker-compose for php and webserver)
+
+### PRODUCIÓN
+sudo docker-compose -f docker-compose-pro.yml up 

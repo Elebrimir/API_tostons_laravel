@@ -41,9 +41,7 @@ services:
             - tostons
 
     tostons_php:
-        build:
-            context: .
-            dockerfile: Dockerfile
+        image: elebrimir/tostons_php:latest
         container_name: tostons_php
         restart: unless-stopped
         tty: true
@@ -56,9 +54,7 @@ services:
             - tostons
 
     tostons_node:
-        build:
-            context: .
-            dockerfile: Dockerfile.node
+        image: elebrimir/tostons_node:latest
         container_name: tostons_node
         ports:
         - 3000:3000
@@ -69,3 +65,6 @@ services:
         - /var/www/node_modules
         networks:
             - tostons
+
+
+

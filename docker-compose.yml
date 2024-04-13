@@ -43,7 +43,7 @@ services:
     tostons_php:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.php
         container_name: tostons_php
         restart: unless-stopped
         tty: true

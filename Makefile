@@ -1,5 +1,10 @@
 build:
-    composer install
+    composer install && npm install
 
-run:
- php artisan serve
+run backend:
+    php artisan serve
+
+run frontend:
+    npm run dev
+
+

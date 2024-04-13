@@ -63,3 +63,29 @@ eliminarlos de la llista dels sortejos que falten.
     Whatsapp,...)
     Alguna cosa més que pot anar eixint amb el feedback, quan es comente amb companys d'organització del torneig i per supost amb jugadors que façen ús de la web.
 <blockquote/>
+
+
+
+
+## Bibliografía
+[Docker Install](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
+
+
+## DOCKER
+
+### BASE DE DATOS
+sudo docker exec -it api_tostons_laravel-tostons_db-1 bash
+mysql -u root -p
+mysql> SHOW DATABASES;
+mysql> USE tostons_web_db;
+mysql> SHOW TABLES;
+
+
+
+
+
+
+
+### WEB
+http://127.0.0.1:8001/login
+>>>>>>> 9123572 (Created Docker-compose for php and webserver)

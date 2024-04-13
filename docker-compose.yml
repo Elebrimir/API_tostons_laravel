@@ -18,8 +18,8 @@ services:
             - .:/var/www/app
             - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
         depends_on:
-            - php
-            - mysql
+            - tostons_php
+            - tostons_mysql
         networks:
             - tostons
 
@@ -54,6 +54,8 @@ services:
             - 9000
         networks:
             - tostons
+        depends_on:
+         - tostons_mysql
 
     tostons_node:
         build:
@@ -69,3 +71,5 @@ services:
         - /var/www/node_modules
         networks:
             - tostons
+        depends_on:
+         - tostons_php

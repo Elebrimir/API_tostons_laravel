@@ -88,4 +88,13 @@ mysql> SHOW TABLES;
 http://127.0.0.1:8001/login
 
 ### PRODUCIÓN
-sudo docker-compose -f docker-compose-pro.yml up 
+sudo docker-compose -f docker-compose-pro.yml up
+
+
+## DIGITAL OCEAN
+- Levantaner el servidor
+- Instalar
+    - [Install docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
+    - [Install docker-compose](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04)
+
+

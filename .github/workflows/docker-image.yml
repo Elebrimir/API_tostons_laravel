@@ -3,16 +3,27 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: elebrimir
+        password: dckr_pat_hUHhmiLZSeac4XWKEYcmYrjdChA
+
+    - name: Build and push Docker image PHP
+      run: |
+        docker build . -t elebrimir/tostons_php:${{ github.run_number }} --file Dockerfile.php
+        docker push elebrimir/tostons_php:${{ github.run_number }}
+
+    - name: Build and push Docker image NODE
+      run: |
+        docker build . -t elebrimir/tostons_node:${{ github.run_number }} --file Dockerfile.node
+        docker push elebrimir/tostons_node:${{ github.run_number }}

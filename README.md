@@ -72,6 +72,9 @@ eliminarlos de la llista dels sortejos que falten.
 
 
 ## DOCKER
+### Bibliografía
+[Dockerfile Nose](https://medium.com/@hafizzeeshan619/effortlessly-dockerize-your-laravel-vue-application-a-step-by-step-guide-906407eb7549)
+[Dockerfile Laravel](https://medium.com/@faidfadjri/how-to-setup-laravel-nginx-using-docker-2023-ba9de4b60d04)
 
 ### BASE DE DATOS
 sudo docker exec -it api_tostons_laravel-tostons_db-1 bash

@@ -28,7 +28,7 @@ services:
         ports:
             - 3306:3306
         volumes:
-            - tostons-db-data:/var/lib/mysql
+            - tostons-db-data_pro:/var/lib/mysql
         environment:
             - MYSQL_ROOT_PASSWORD=TostPassAdmin
             - MYSQL_DATABASE=tostons_web_db

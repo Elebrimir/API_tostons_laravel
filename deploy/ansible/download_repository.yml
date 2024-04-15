@@ -1,0 +1,19 @@
+---
+- name: Descargar la última versión de un repositorio de GitHub en un servidor DigitalOcean
+  vars:
+    ansible_host_key_checking: false
+  hosts: all
+  become: yes
+  tasks:
+    - name: Clonar el repositorio desde GitHub
+      git:
+        repo: "https://github.com/Elebrimir/API_tostons_laravel.git"
+        dest: "/var/www/tostons"
+        version: "main"  # O la rama que desees
+
+    - name: Instalar git (si no está instalado)
+      package:
+        name: git
+        state: present
+        update_cache: yes
+      when: ansible_pkg_mgr == 'apt'

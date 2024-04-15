@@ -97,4 +97,14 @@ sudo docker-compose -f docker-compose-pro.yml up
     - [Install docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
     - [Install docker-compose](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04)
 
+- Ansible para deploy
+    - sudo apt install ansible
+    - Crear playbook y roles
+    - export DIGITALOCEAN_TOKEN=your_token_here
+        - https://ayphu.com/docs/como-crear-un-token-en-digital-ocean/
+    - Ejecutar el playbook
+        - ansible-playbook -i hosts deploy/ansible/download_repository.yml
+
+
+
 

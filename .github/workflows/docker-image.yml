@@ -20,10 +20,10 @@ jobs:
 
     - name: Build and push Docker image PHP
       run: |
-        docker build . -t elebrimir/tostons_php:latest --file Dockerfile.php
-        docker push elebrimir/tostons_php:latest
+        docker build . -t elebrimir/tostons_php:${{ github.run_number }} --file Dockerfile.php
+        docker push elebrimir/tostons_php:${{ github.run_number }}
 
     - name: Build and push Docker image NODE
       run: |
-        docker build . -t elebrimir/tostons_node:latest --file Dockerfile.node
-        docker push elebrimir/tostons_node:latest
+        docker build . -t elebrimir/tostons_node:${{ github.run_number }} --file Dockerfile.node
+        docker push elebrimir/tostons_node:${{ github.run_number }}

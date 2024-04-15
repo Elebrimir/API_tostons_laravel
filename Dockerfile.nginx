@@ -1,0 +1,13 @@
+# Utiliza una imagen base de Nginx
+FROM nginx:alpine
+
+
+# Copia tu archivo de configuración personalizado de Nginx al contenedor
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY . /var/www/app
+
+# Exponer el puerto 80 para que pueda ser accesible desde fuera del contenedor
+EXPOSE 80
+
+# Comando para iniciar Nginx cuando se ejecute el contenedor
+CMD ["nginx", "-g", "daemon off;"]

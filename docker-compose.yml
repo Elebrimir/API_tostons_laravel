@@ -8,7 +8,9 @@ volumes:
 
 services:
     tostons_nginx:
-        image: nginx:alpine
+        build:
+            context: .
+            dockerfile: Dockerfile.nginx
         container_name: tostons_nginx
         restart: unless-stopped
         tty: true

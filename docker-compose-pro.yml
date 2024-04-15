@@ -8,7 +8,7 @@ volumes:
 
 services:
     tostons_nginx_pro:
-        image: elebrimir/tostons_ngnix:8
+        image: elebrimir/tostons_ngnix:1
         container_name: tostons_nginx_pro
         restart: unless-stopped
         tty: true
@@ -41,7 +41,7 @@ services:
             - tostons_pro
 
     tostons_php_pro:
-        image: elebrimir/tostons_php:8
+        image: elebrimir/tostons_php:1
         container_name: tostons_php_pro
         restart: unless-stopped
         tty: true
@@ -56,7 +56,7 @@ services:
          - tostons_mysql_pro
 
     tostons_node_pro:
-        image: elebrimir/tostons_node:8
+        image: elebrimir/tostons_node:1
         container_name: tostons_node_pro
         ports:
         - 3000:3000

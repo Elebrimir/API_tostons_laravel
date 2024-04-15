@@ -103,7 +103,7 @@ sudo docker-compose -f docker-compose-pro.yml up
     - export DIGITALOCEAN_TOKEN=your_token_here
         - https://ayphu.com/docs/como-crear-un-token-en-digital-ocean/
     - Ejecutar el playbook
-        - ansible-playbook -i hosts deploy/ansible/download_repository.yml
+        - ansible-playbook -i inventory/inventario download_repository.yml 
 
 
 

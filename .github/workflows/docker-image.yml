@@ -32,4 +32,3 @@ jobs:
       run: |
         docker build . -t elebrimir/tostons_ngnix:${{ github.run_number }} --file Dockerfile.nginx
         docker push elebrimir/tostons_ngnix:${{ github.run_number }}
-

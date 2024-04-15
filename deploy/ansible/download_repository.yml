@@ -4,12 +4,15 @@
     ansible_host_key_checking: false
   hosts: all
   become: yes
+  vars_prompt:
+    - name: version_deploy
+      prompt: "Por favor, introduce la versión a desplegar"
+      private: false
+
   tasks:
-    - name: Clonar el repositorio desde GitHub
-      git:
-        repo: "https://github.com/Elebrimir/API_tostons_laravel.git"
-        dest: "/var/www/tostons"
-        version: "main"  # O la rama que desees
+    - name: Print a message
+      ansible.builtin.debug:
+        msg: 'version_deploy es {{ version_deploy }}'
 
     - name: Instalar git (si no está instalado)
       package:
@@ -18,7 +21,43 @@
         update_cache: yes
       when: ansible_pkg_mgr == 'apt'
 
-    - name: Reiniciar servicio de Docker Compose
+    - name: Clonar el repositorio desde GitHub
+      git:
+        repo: "https://github.com/Elebrimir/API_tostons_laravel.git"
+        dest: "/var/www/tostons"
+        version: "main"  # O la rama que desees
+        force: yes
+
+    - name: Reemplazar el tag de la imagen en Nginx
+      replace:
+        path: /var/www/tostons/docker-compose-pro.yml
+        regexp: 'elebrimir/tostons_ngnix:[0-9]*'
+        replace: 'elebrimir/tostons_ngnix:{{ version_deploy }}'
+
+    - name: Reemplazar el tag de la imagen en PHP
+      replace:
+        path: /var/www/tostons/docker-compose-pro.yml
+        regexp: 'elebrimir/tostons_php:[0-9]*'
+        replace: 'elebrimir/tostons_php:{{ version_deploy }}'
+
+    - name: Reemplazar el tag de la imagen en NODE
+      replace:
+        path: /var/www/tostons/docker-compose-pro.yml
+        regexp: 'elebrimir/tostons_node:[0-9]*'
+        replace: 'elebrimir/tostons_node:{{ version_deploy }}'
+
+    - name: Copiar archivos de Docker Compose
+      copy:
+        remote_src: yes
+        src: /var/www/tostons/docker-compose-pro.yml
+        dest: /var/www/tostons/docker-compose.yml
+
+    - name: Parar servicio de Docker Compose
       docker_compose:
-        project_src: /var/al/directorio/con/docker-compose.yml
-        state: restarted
+        project_src: /var/www/tostons/
+        state: absent
+
+    - name: Arrancar servicio de Docker Compose
+      docker_compose:
+        project_src: /var/www/tostons/
+        state: present

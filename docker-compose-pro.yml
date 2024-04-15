@@ -8,12 +8,15 @@ volumes:
 
 services:
     tostons_nginx_pro:
-        image: nginx:alpine
+        image: elebrimir/tostons_ngnix:8
         container_name: tostons_nginx_pro
         restart: unless-stopped
         tty: true
         ports:
             - 80:80
+        volumes:
+            - .:/var/www/app
+            - ./nginx/default-pro.conf:/etc/nginx/conf.d/default.conf
         depends_on:
             - tostons_php_pro
             - tostons_mysql_pro
@@ -38,11 +41,13 @@ services:
             - tostons_pro
 
     tostons_php_pro:
-        image: elebrimir/tostons_php:latest
+        image: elebrimir/tostons_php:8
         container_name: tostons_php_pro
         restart: unless-stopped
         tty: true
         working_dir: /var/www/app
+        volumes:
+            - .:/var/www/app
         expose:
             - 9000
         networks:
@@ -51,12 +56,15 @@ services:
          - tostons_mysql_pro
 
     tostons_node_pro:
-        image: elebrimir/tostons_node:latest
+        image: elebrimir/tostons_node:8
         container_name: tostons_node_pro
         ports:
         - 3000:3000
         restart: unless-stopped
         working_dir: /var/www
+        volumes:
+        - ./:/var/www
+        - /var/www/node_modules
         networks:
             - tostons_pro
         depends_on:

@@ -27,3 +27,9 @@ jobs:
       run: |
         docker build . -t elebrimir/tostons_node:${{ github.run_number }} --file Dockerfile.node
         docker push elebrimir/tostons_node:${{ github.run_number }}
+
+    - name: Build and push Docker image NGINX
+      run: |
+        docker build . -t elebrimir/tostons_nginx:${{ github.run_number }} --file Dockerfile.nginx
+        docker push elebrimir/tostons_ngnix:${{ github.run_number }}
+

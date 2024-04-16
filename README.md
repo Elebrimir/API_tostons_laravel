@@ -55,56 +55,76 @@ del finals dels anys 80 però que avui en día continúa jungant-se a nivell mun
 -   Una secció amb els regals a sortejar durant el dia, haurà de tindre un llançador de sorteig aleatori
 sobre el llistat de jugadors participants i un registre de tots els jugadors que han sigut agraciats per a
 eliminarlos de la llista dels sortejos que falten.
-<blockquote>- Opcionals (Aquestes seccións segurament seràn d’accés públic sense necessitat d’estar registrat al sistema):
+- Opcionals (Aquestes seccións segurament seràn d’accés públic sense necessitat d’estar registrat al sistema):
 
 -   Historial de Edicions anteriors amb tots el guanyador de totes les categories del torneig.
 -   Apartat amb fotos i imatges de premis, patrocinadors, etc.
 -   Secció de enllaços d’interés a diverses pàgines, forums i grups de xaxes socials (Telegram,
     Whatsapp,...)
     Alguna cosa més que pot anar eixint amb el feedback, quan es comente amb companys d'organització del torneig i per supost amb jugadors que façen ús de la web.
-<blockquote/>
 
 
 
 
-## Bibliografía
-[Docker Install](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
 
 
-## DOCKER
-### Bibliografía
+
+
+## DOCKER, DIGITAL OCEAN I DEPLOY WEB
+
+En Docker ens hem centrat en crear contenedors per executar aplicacions en un entorn virtualizat. Amb Docker podem crear contenidor que cadascún tinga un servici. En aquest cas PHP, Nginx i Node.
+
+
+
+### DOCKER
+
+Docker és una plataforma de virtualització que permet als desenvolupadors crear, implementar i executar aplicacions de manera lleugera i portàtil en entorns de contenidors. En lloc de virtualitzar tot el sistema operatiu, com ho fa la virtualització tradicional, Docker utilitza els contenidors per a encapsular aplicacions juntament amb les seves dependencies i llibreries necessàries per a funcionar.
+
+Aquests contenidors són independents, lleugers i es poden executar en qualsevol lloc on Docker estigui instal·lat, ja sigui en entorns de desenvolupament, servidors de producció o fins i tot en la núvol. Això permet als desenvolupadors crear un entorn de desenvolupament consistent i replicable, assegurant que les aplicacions funcionin de la mateixa manera en tots els entorns.
+
+Una de les principals avantatges de Docker és la seva eficiència i rapidesa. Els contenidors es poden crear, implementar i escalar de manera molt ràpida, ja que comparteixen els recursos del sistema host i no requereixen l'execució d'un sistema operatiu complet per a cada aplicació.
+
+En resum, Docker simplifica el procés de desenvolupament i implementació d'aplicacions al proporcionar un entorn de contenidors lleuger i portàtil, que permet als desenvolupadors treballar de manera més eficient i escalable en tots els entorns.
+
+Per la instalació de docker hem utilitzar unes guies que ens han ajudat
+
 [Dockerfile Nose](https://medium.com/@hafizzeeshan619/effortlessly-dockerize-your-laravel-vue-application-a-step-by-step-guide-906407eb7549)
+
 [Dockerfile Laravel](https://medium.com/@faidfadjri/how-to-setup-laravel-nginx-using-docker-2023-ba9de4b60d04)
 
-### BASE DE DATOS
-sudo docker exec -it api_tostons_laravel-tostons_db-1 bash
-mysql -u root -p
-mysql> SHOW DATABASES;
-mysql> USE tostons_web_db;
-mysql> SHOW TABLES;
 
 
-### WEB
-http://127.0.0.1:8001/login
+### DIGITAL OCEAN
+DigitalOcean és una empresa proveïdora de serveis d'infraestructura a la núvol, que ofereix servidors virtuals (també coneguts com a instàncies o droplets), emmagatzematge a la núvol, xarxes i altres serveis relacionats. És coneguda pel seu enfocament en la simplicitat i la facilitat d'ús, especialment per a desenvolupadors i petites empreses.
 
-### PRODUCIÓN
-sudo docker-compose -f docker-compose-pro.yml up
+Els serveis de DigitalOcean estan dissenyats per ser accessibles per a usuaris amb diferents nivells d'experiència tècnica. Ofereixen una varietat d'opcions de configuració per als seus servidors virtuals, permetent als usuaris escalars els seus recursos de manera flexible segons les necessitats de la seva aplicació o projecte.
 
+DigitalOcean també ofereix una àmplia gamma de guies i tutorials a la seva comunitat en línia, la qual ajuda als usuaris a aprendre sobre diferents aspectes de la computació a la núvol i a resoldre problemes comuns. Això ha contribuït a la seva popularitat entre la comunitat de desenvolupadors i emprenedors.
 
-## DIGITAL OCEAN
 - Levantaner el servidor
-- Instalar
+- Instalar al servidor Digital ocean
     - [Install docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04)
+
     - [Install docker-compose](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04)
 
-- Ansible para deploy
-    - sudo apt install ansible
-    - Crear playbook y roles
-    - export DIGITALOCEAN_TOKEN=your_token_here
-        - https://ayphu.com/docs/como-crear-un-token-en-digital-ocean/
-    - Ejecutar el playbook
-        - ansible-playbook -i inventory/inventario download_repository.yml 
 
 
+### DEPLOY AMB ANSIBLE
+
+Ansible és una eina de gestió de la configuració i automatització d'infraestructures, àmpliament utilitzada en entorns de tecnologia de la informació i desenvolupament de programari. Permet als administradors de sistemes automatitzar tasques repetitives, com la configuració de servidors, implementacions d'aplicacions, gestió de configuracions i orquestació de serveis en un entorn informàtic.
+
+Una de les característiques principals d'Ansible és la seva simplicitat d'ús i la seva facilitat d'aprenentatge, ja que utilitza un llenguatge de descripció de tasques senzill i basat en YAML (YAML Ain't Markup Language). Això fa que sigui més accessible per a administradors de sistemes i desenvolupadors amb diferents nivells d'experiència.
+
+Ansible funciona mitjançant l'enviament de mòduls a agents remots per a executar tasques específiques, sense necessitat d'instal·lar cap agent permanent a les màquines objectiu. Això fa que sigui més lleuger i fàcil de gestionar en comparació amb altres eines similars.
+
+En resum, Ansible simplifica la gestió i automatització de la infraestructura informàtica, permetent als equips de TI i desenvolupadors estalviar temps i recursos mitjançant la automatització de tasques rutinàries i repetitives.
+
+[Tutorial de Ansible](https://www.digitalocean.com/community/tutoials/how-to-install-and-configure-ansible-on-ubuntu-22-04)
+
+```bash
+$ cd deploy/ansible/
+
+$ ansible-playbook -i inventory/inventario download_repository.yml
+```
 
 

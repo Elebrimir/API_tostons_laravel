@@ -1,7 +1,7 @@
 <script setup>
 
-import TostonetLogo from '@/Components/TostonetLogo.vue';
 import PlayersFormUpdate from '@/Components/PlayersFormUpdate.vue';
+import TostonetLogo2 from '@/Components/TostonetLogo2.vue';
 
 defineProps({
     players: Object,
@@ -12,7 +12,7 @@ defineProps({
 <template>
     <div>
         <div class=" grid place-items-center p-6 lg:p-8 bg_white border-b border-gray-200">
-            <TostonetLogo class="block h-48 w-auto" />
+            <TostonetLogo2 class="block h-48 w-auto" />
 
             <h1 class="mt-8 text-3xl font-medium text-gray-900 border-b-4 mb-4">
                 Listado de Jugadores Participantes en la Edición de la Tostons

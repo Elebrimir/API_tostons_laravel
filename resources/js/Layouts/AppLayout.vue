@@ -6,7 +6,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import TostonetLogo from '@/Components/TostonetLogo.vue';
+import TostonetLogo2 from '@/Components/TostonetLogo2.vue';
 
 defineProps({
     title: String,
@@ -42,7 +42,7 @@ const logout = () => {
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
-                                    <TostonetLogo class="block h-12 w-auto" />
+                                    <TostonetLogo2 class="block h-12 w-auto" />
                                 </Link>
                             </div>
 

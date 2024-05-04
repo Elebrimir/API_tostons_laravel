@@ -6,7 +6,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import TostonetLogo from '@/Components/TostonetLogo.vue';
+import TostonetLogo2 from '@/Components/TostonetLogo2.vue';
 
 const recovery = ref(false);
 
@@ -42,7 +42,7 @@ const submit = () => {
 
     <AuthenticationCard>
         <template #logo>
-            <TostonetLogo />
+            <TostonetLogo2 />
         </template>
 
         <div class="mb-4 text-sm text-gray-600">

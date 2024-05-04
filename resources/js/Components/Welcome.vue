@@ -1,11 +1,11 @@
 <script setup>
-import TostonetLogo from '@/Components/TostonetLogo.vue';
+import TostonetLogo2 from './TostonetLogo2.vue';
 </script>
 
 <template>
     <div>
         <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
-            <TostonetLogo class="block h-24 w-auto" />
+            <TostonetLogo2 class="block h-24 w-auto" />
 
             <div class=" bg-slate-200 divide-y divide-gray-400 border-gray-400 rounded-xl m-2">
                 <h1 class=" text-center mt-8 text-2xl font-medium text-gray-900">Bienvenido: {{ $page.props.auth.user.name }} - NAF Nickname: {{ $page.props.auth.user.nickname }} {{ $page.props.auth.user.id }}</h1>

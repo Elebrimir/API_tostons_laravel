@@ -210,6 +210,22 @@ const logout = () => {
                             Dashboard
                         </ResponsiveNavLink>
                     </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('usuarios')" :active="route().current('usuarios')">
+                            Usuarios
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('players')" :active="route().current('players')">
+                            Jugadores
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('partidos')" :active="route().current('partidos')">
+                            Partidos
+                        </ResponsiveNavLink>
+                    </div>
+
 
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">

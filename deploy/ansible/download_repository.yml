@@ -24,15 +24,14 @@
         project_src: /var/www/tostons/
         state: absent
 
+    - name: Arrancar servicio de Docker Compose
+      docker_compose:
+        project_src: /var/www/tostons/
+        state: present
+
     - name: Renombrar el fichero node
       ansible.builtin.file:
         src: "/var/www/tostons/vite.config.js.PRO"
         dest: "/var/www/tostons/vite.config.js"
         state: hard
         force: yes
-
-    - name: Arrancar servicio de Docker Compose
-      docker_compose:
-        project_src: /var/www/tostons/
-        state: present
-

@@ -35,4 +35,3 @@
       docker_compose:
         project_src: /var/www/tostons/
         state: present
-

@@ -77,7 +77,7 @@ defineProps({
 
 <style>
 .bg-dots-darker {
-    background-color: rgb(255 255 55 / var(--tw-bg-opacity));
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 @media (prefers-color-scheme: dark) {
